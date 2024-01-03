@@ -1,0 +1,64 @@
+{% from "showlinks.html" import show_links, show_footer %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}'" type="text/css">
+
+</head>
+<body>
+<div> {{ show_links() }}</div>
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100 bg-light" style="border-radius:25px;">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                     class="img-fluid" alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
+                <h3>Login Form {% if loginerror %} {{ loginerror }} {% endif %}</h3>
+                <form class="p-3 needs-validation" novalidate action="/login" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address /
+                            Username</label>
+                        <input autocomplete="off" type="email" name="name" class="form-control"
+                               id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        <div id="emailHelp" class="form-text" style="color:rgb(0, 75, 93);">
+                            We'll never share your email with anyone else.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control"
+                               id="exampleInputPassword1" autocomplete="off"
+                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" required>
+                        <div id="passwordHelp" class="form-text" style="color:rgb(0, 75, 93);">
+                            Must need a one lowercase letter,one uppercase letter,one digit,
+                            one special character and 8 and 16 characters in length
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                            You must agree before submitting.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn gradient-custom-2 text-white mt-3"
+                            style="background-color:rgb(0, 75, 93);">Sign in
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+ {{show_footer()}}
+<script src="{{ url_for('static', filename='validation.js') }}"></script>
+</body>
+</html>

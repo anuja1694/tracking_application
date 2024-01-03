@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+html, body{
+height: 100%;
+/*background-color: transparent;*/
+}
+.bgcustom{background-color: #012c3f;
+}
+a.nav-link{color:#fff !important;}
+a.nav-link:hover {
+    color: #012c3f !important;
+    background: #e7e7e7;
+}
+body {
+	min-height: 100%;
+    height: 100%;
+background: url("https://images.unsplash.com/photo-1494412519320-aa613dfb7738?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80") no-repeat center center;
+	background-blend-mode: multiply;
+	background-size: cover;
+	background-color: rgba(0,0,0,0.55);
+    z-index: 1;
+}
+.heroHome {
+	min-height: 100%;
+    height: 100%;
+
+}
+
+nav {
+    font-family: 'Poppins', sans-serif;
+    border-radius: 50px !important;
+    padding: 0 40px !important;
+}
+
+a.nav-link {
+    margin: 10px;
+    padding: 10px 20px !important;
+    color: #9f9f9f;
+    border-radius: 50px;
+}
+
+a.nav-link:hover {
+    color: #888888;
+    background: #e7e7e7;
+}
+
+.navbar-toggler {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.navbar-toggler:active {
+    outline: none;
+    border: none;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.navbar-toggler img {
+    transition: width 0.15s ease-in-out;
+}
+
+.navbar-toggler.clicked img {
+    width: 75px;
+}
+
+.herooverlay {
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.55);
+    z-index: 1;
+}
+
+.heroHome h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	color: #fff;
+	font-size:60px;
+	font-weight: 300;
+	text-align: center;
+	white-space: nowrap;
+}
+.heroHome h1 span {
+	display: block;
+	font-size: 90px;
+	font-weight: 600;
+}

@@ -1,0 +1,83 @@
+{% from "showlinks.html" import show_links, show_footer %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div> {{ show_links() }}</div>
+<div class="container">
+    <div class="col-md-12 ">
+        {% if user %}
+        <p class="float-end">User: {{user['name']}}</p>
+        {% endif %}
+
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-center pt-1 mb-5 pb-1">
+                <button class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button"> View All Tracking
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center pt-1 mb-5 pb-1">
+                <button onclick="location.href='{{url_for('addtracking')}}'"
+                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button">Add new tracking
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="table-responsive-lg caption-top p-5 bg-light">
+    <caption><h3>Tracking detail</h3></caption>
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Trk ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Route</th>
+            <th scope="col">Vechicle num</th>
+            <th scope="col">Vehicle status</th>
+            <th scope="col">Assigned to</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+            <th scope="col">View Tracking history</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for trk in alltrk %}
+        <tr>
+            <th scope="row">{{ trk['trkid'] }}</th>
+            <td>{{ trk['trk_date'] }}</td>
+            <td>{{ trk['route'] }}</td>
+            <td>{{ trk['vehicle'] }}</td>
+            <td>{{ trk['team'] }}</td>
+            <td>{{ trk['status'] }}</td>
+            <td><a class="btn bg-danger text-white btn-sm" href="{{ url_for('fetchone', trkid = trk['trkid'] )}}">Update</a></td>
+            <td><a class="btn bg-success text-white btn-sm" href="{{ url_for('deletetrk', trkid = trk['trkid'] )}}">Delete</a></td>
+            <td><a class="btn btn-primary text-white btn-sm" href="{{ url_for('singletracking', trkid = trk['trkid'] )}}">View Tracking history</a></td>
+        </tr>
+        {% endfor %}
+        <tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+<div style="height: 120px;"></div>
+
+    {{show_footer()}}
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% from "showlinks.html" import show_links, show_footer %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div> {{ show_links() }}</div>
+<div class="container">
+    <div class="col-md-12">
+        <div class="card-body">
+            <h3 class="card-title pt-3 pb-3 text-white">Tracking history </h3>
+            {% if single_trk %}
+            <ul class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Route: {{single_trk['route']}}</div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Vehicle number: {{single_trk['vehicle']}}</div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Vechicle Status: {{single_trk['status']}}</div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Assigned security team: {{single_trk['team']}}</div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Travel Date: {{single_trk['trk_date']}}</div>
+                    </div>
+                </li>
+            </ul>
+            {% endif %}
+            <p class="card-text"><small class="text-muted">Last updated on : </small></p>
+        </div>
+        <div class="text-center pt-1 mb-5 pb-1">
+            <button onclick="location.href='{{ url_for('tracking') }}'"
+                    class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                    type="button">Go back to tracking
+            </button>
+        </div>
+    </div>
+</div>
+
+<div style="height: 150px;"></div>
+ {{show_footer()}}
+</body>
+</html>

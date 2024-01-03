@@ -1,0 +1,99 @@
+{% from "showlinks.html" import show_links, show_footer %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div> {{ show_links() }}</div>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-center pt-1 pb-1">
+                <button class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button"> View All Tracking
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center pt-1 pb-1">
+                <button onclick="location.href='{{url_for('addtracking')}}'"
+                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button">Add new tracking
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-5 bg-light mb-5">
+    <h2>Add Tracking details</h2>
+    <form class="needs-validation" novalidate action="/addtracking" method="POST">
+        <div class="mb-3" >
+            <select class="form-select" required aria-label="select example" name="route">
+                <option value="">Select Route</option>
+                <option value="Route 1">Route 1</option>
+                <option value="Route 2">Route 2</option>
+                <option value="Route 3">Route 3</option>
+            </select>
+            <div class="invalid-feedback">Example invalid select feedback</div>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" required aria-label="select example" name="vehicle">
+                <option value="">Select Vehicle num</option>
+                <option value="Van 01">Van 01</option>
+                <option value="Van 02">Van 02</option>
+                <option value="Van 03">Van 03</option>
+            </select>
+            <div class="invalid-feedback">Example invalid select feedback</div>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" required aria-label="select example" name="status">
+                <option value="">Vechicle Status</option>
+                <option value="Out of depot">Out of depot</option>
+                <option value="On the route">On the route</option>
+                <option value="Out of service">Out of service</option>
+                <option value="Destination">Destination</option>
+            </select>
+            <div class="invalid-feedback">Example invalid select feedback</div>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" required aria-label="select example" name="team">
+                <option value="">Assigned security team</option>
+                <option value="Security Team 01">Security Team 01</option>
+                <option value="Security Team 02">Security Team 02</option>
+                <option value="Security Team 03">Security Team 03</option>
+            </select>
+            <div class="invalid-feedback">Example invalid select feedback</div>
+        </div>
+        <div class="col-md-6">
+            <label for="datepicker" class="form-label">Date of travel</label>
+            <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                <input autocomplete="off" class="form-control" type="text" name="trk_date" readonly/>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+
+            <div class="invalid-feedback">
+                Please provide a date.
+            </div>
+        </div>
+        <div class="mt-5 mb-5">
+            <button class="btn btn-primary" type="submit" >Submit form</button>
+        </div>
+    </form>
+</div>
+ {{show_footer()}}
+<script src="{{ url_for('static', filename='validation.js') }}"></script>
+<script>$(function () {
+  $("#datepicker").datepicker({
+        autoclose: true,
+        todayHighlight: true
+  }).datepicker('update', new Date());
+});
+
+</script>
+</body>
+</html>
